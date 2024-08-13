@@ -2,6 +2,10 @@ import express from "express";
 const app = express();
 const port = 8001;
 
+
+app.use(express.json());
+
+
 app.get("/products", (req, res) => {
     res.send("products will be here");
 })
@@ -11,7 +15,8 @@ app.get("/products/:id", (req, res) => {
 })
 
 app.post("/products", (req, res) => {
-    res.send("product created");
+    console.log(req.body);
+    res.send(req.body);
 })
 
 app.listen(port, () => {
