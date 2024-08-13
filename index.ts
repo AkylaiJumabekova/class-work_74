@@ -1,23 +1,12 @@
 import express from "express";
+import productsRouter from "./routers/products";
 const app = express();
 const port = 8001;
 
 
 app.use(express.json());
 
-
-app.get("/products", (req, res) => {
-    res.send("products will be here");
-})
-
-app.get("/products/:id", (req, res) => {
-    res.send("product info:" + req.params.id);
-})
-
-app.post("/products", (req, res) => {
-    console.log(req.body);
-    res.send(req.body);
-})
+app.use('/', productsRouter);
 
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
