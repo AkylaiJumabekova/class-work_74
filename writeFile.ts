@@ -1,11 +1,13 @@
-import fs from 'fs';
-
+import {promises as fs} from 'fs';
 const fileName = './test.txt'
 
-fs.writeFile(fileName, "Hello, world!", (err) => {
-    if (err) {
-        console.error(err);
+const run = async () => {
+    try {
+        await fs.writeFile(fileName, "s!")
+        console.log("Successfully written!")
+    } catch (e) {
+        console.error(e)
     }
+}
 
-    console.log("file created!");
-})
+run().catch(console.error)
